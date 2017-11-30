@@ -26,8 +26,11 @@ public class PoissonDO {
 	@Column(name = "couleur")
 	private String couleur;
 
-	@Column(name = "taille")
-	private String taille;
+	@Column(name = "longueur")
+	private Float longueur;
+
+	@Column(name = "largeur")
+	private Float largeur;
 
 	@Column(name = "prix")
 	private Integer prix;
@@ -50,7 +53,7 @@ public class PoissonDO {
 	/**
 	 * @return the nom
 	 */
-	public String getEspece() {
+	public String getNom() {
 		return nom;
 	}
 
@@ -93,18 +96,33 @@ public class PoissonDO {
 	}
 
 	/**
-	 * @return the taille
+	 * @return the longueur
 	 */
-	public String getTaille() {
-		return taille;
+	public Float getLongueur() {
+		return longueur;
+	}
+
+	/**
+	 * @param longueur
+	 *            the longueur to set
+	 */
+	public void setLongueur(Float longueur) {
+		this.longueur = longueur;
+	}
+
+	/**
+	 * @return the largeur
+	 */
+	public Float getLargeur() {
+		return largeur;
 	}
 
 	/**
 	 * @param largeur
-	 *            the taille to set
+	 *            the largeur to set
 	 */
-	public void setTaille(String taille) {
-		this.taille = taille;
+	public void setLargeur(Float largeur) {
+		this.largeur = largeur;
 	}
 
 	/**
