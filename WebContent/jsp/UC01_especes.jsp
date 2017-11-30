@@ -17,6 +17,7 @@
 <body>
 	<h1>
 		<bean:message key="message.bienvenue" />
+		<bean:write name = "loginForm" property = "user" />
 	</h1>
 
 	<table class="pure-table">
