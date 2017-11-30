@@ -17,6 +17,7 @@ public class PoissonService implements IPoissonService {
 
 	private IPoissonDAO poissonDao;
 
+	@Override
 	public List<PoissonVO> getAll() {
 
 		final List<PoissonVO> listPoissons = new LinkedList<PoissonVO>();
@@ -30,11 +31,24 @@ public class PoissonService implements IPoissonService {
 	}
 
 	@Override
+	public Boolean isExist(final PoissonVO poisson) {
+
+		final List<PoissonVO> listPoissons = new LinkedList<PoissonVO>();
+
+		for (PoissonDO poissonDO : poissonDao.getByNom(poisson.getNom())) {
+			listPoissons.add(mapToVO(poissonDO));
+		}
+
+		return listPoissons.isEmpty();
+	}
+
+	@Override
 	public void save(PoissonVO poissonForm) {
 		// final PoissonDAO poissonDAO = new PoissonDAO();
 		poissonDao.insert(mapToDO(poissonForm));
 	}
 
+	@Override
 	public PoissonVO mapToVO(final PoissonDO d) {
 		final PoissonVO poissonVO = new PoissonVO();
 		poissonVO.setNom(d.getNom());
@@ -45,6 +59,7 @@ public class PoissonService implements IPoissonService {
 		return poissonVO;
 	}
 
+	@Override
 	public PoissonDO mapToDO(final PoissonVO vo) {
 		final PoissonDO poissonDO = new PoissonDO();
 		poissonDO.setNom(vo.getNom());

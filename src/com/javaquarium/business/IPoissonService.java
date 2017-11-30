@@ -20,9 +20,12 @@ public interface IPoissonService {
 	 */
 	List<PoissonVO> getAll();
 
+	Boolean isExist(PoissonVO poissonForm);
+
 	void save(PoissonVO poissonForm);
 
 	PoissonVO mapToVO(final PoissonDO d);
 
 	PoissonDO mapToDO(final PoissonVO d);
+
 }
