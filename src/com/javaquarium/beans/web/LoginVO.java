@@ -1,6 +1,11 @@
 package com.javaquarium.beans.web;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 public class LoginVO extends ActionForm {
 	/**
@@ -34,6 +39,21 @@ public class LoginVO extends ActionForm {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public ActionErrors validate(final ActionMapping mapping, final HttpServletRequest request) {
+		if (getPassword() != null) {
+			if (getPassword().length() >= 4)
+				return super.validate(mapping, request);
+			else {
+				ActionErrors errors = new ActionErrors();
+				errors.add("error", new ActionMessage("error.password"));
+
+				return errors;
+			}
+		}
+		return new ActionErrors();
 	}
 
 }
