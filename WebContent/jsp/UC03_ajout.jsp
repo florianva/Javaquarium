@@ -14,12 +14,16 @@
 
 </head>
 <body>
+
 	<center>
+		<div style="color:red">
+			<html:errors/>
+		</div>
 		<form class="pure-form pure-form-aligned" action="/Javaquarium/ajoutEspece.do" method="post">
     <fieldset>
         <div class="pure-control-group">
             <label for="name">Nom</label>
-            <input id="nom" type="text" placeholder="Nom" name="nom">
+            <input id="nom" type="text" placeholder="Nom" name="nom" required>
         </div>
         <div class="pure-control-group">
             <label for="name">Description</label>
@@ -31,12 +35,12 @@
         </div>
         <div class="pure-control-group">
             <label for="name">Prix</label>
-            <input id="prix" type="text" placeholder="Prix" name="prix">
+            <input id="prix" type="number" placeholder="Prix" name="prix" required>
         </div>
 
         <div class="pure-control-group">
             <label for="password">Dimension(Lxl)</label>
-            <input id="dimension" type="text" placeholder="Dimension" name = "dimension">
+            <input id="dimension" type="text" placeholder="Dimension" name = "dimension" required>
         </div>
 		<div>
             <button type="submit" class="pure-button pure-button-primary">Submit</button>

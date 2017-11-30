@@ -1,6 +1,11 @@
 package com.javaquarium.beans.web;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 /**
  * Classic Bean
@@ -97,6 +102,26 @@ public class PoissonVO extends ActionForm {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public ActionErrors validate(final ActionMapping mapping, final HttpServletRequest request) {
+		ActionErrors errors = new ActionErrors();
+		errors.clear();
+		if (getNom().isEmpty()) {
+			errors.add("error", new ActionMessage("error.newespece.nom"));
+		}
+		if (getPrix() == null) {
+			errors.add("error", new ActionMessage("error.newespece.prix"));
+		}
+		if (getDimension().isEmpty()) {
+			errors.add("error", new ActionMessage("error.newespece.dim"));
+		} else if (getDimension().split("x").length != 2) {
+			errors.add("error", new ActionMessage("error.newespece.dim.invalidformat"));
+		}
+
+		return errors;
+
 	}
 
 }
