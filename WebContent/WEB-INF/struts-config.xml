@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config 
+PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+
+<struts-config>
+
+	<form-beans type="org.apache.struts.action.ActionFormBean">
+		<form-bean name="loginForm" type="com.javaquarium.beans.web.LoginVO" />
+		<form-bean name="poissonForm" type="com.javaquarium.beans.web.PoissonVO" />
+	</form-beans>
+	
+	
+	<action-mappings>
+	<action path="/listerEspece"
+		type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="success" path="/jsp/UC01_especes.jsp"/>
+		</action>
+		
+	<action path="/login" input="/jsp/UC00_login.jsp" name="loginForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+            <forward name="failed" path="/jsp/UC00_login.jsp"></forward>
+            <forward name="success" path="/listerEspece.do"></forward>
+        </action>
+        
+        
+    <action path="/ajoutEspece" input="/jsp/UC03_ajout.jsp" name="poissonForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="failed" path="/jsp/UC03_ajout.jsp"></forward>
+		<forward name="success" path="/listerEspece.do"></forward>	
+	</action>
+	</action-mappings>
+	
+	
+		
+	
+	<message-resources parameter="ApplicationResources"/>
+	
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+        <set-property property="contextConfigLocation" value="/WEB-INF/applicationContext.xml"/>
+    </plug-in>
+</struts-config>
