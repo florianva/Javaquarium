@@ -22,12 +22,17 @@ public class LoginAction extends Action {
 	private static final String FW_SUCCESS = "success";
 	private static final String FW_FAILED = "failed";
 
-	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	@Override
+	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
+			final HttpServletResponse response) throws Exception {
 
-		LoginVO loginForm = (LoginVO) form;
-		if (loginForm.getUser().equals(loginForm.getPassword())) {
-			return mapping.findForward(FW_SUCCESS);
+		final LoginVO loginForm = (LoginVO) form;
+		if (loginForm != null) {
+			if (loginForm.getUser().equals(loginForm.getPassword())) {
+				return mapping.findForward(FW_SUCCESS);
+			} else {
+				return mapping.findForward(FW_FAILED);
+			}
 		} else {
 			return mapping.findForward(FW_FAILED);
 		}

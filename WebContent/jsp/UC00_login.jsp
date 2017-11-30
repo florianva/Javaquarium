@@ -15,16 +15,19 @@
 </head>
 <body>
 	<center>
+	<div style="color:red">
+	<html:errors/>
+	</div>
 		<form class="pure-form pure-form-aligned" action="login.do" method="post">
     <fieldset>
         <div class="pure-control-group">
             <label for="name">Username</label>
-            <input id="name" type="text" placeholder="Username" name="user">
+            <input id="name" type="text" placeholder="Username" name="user" required>
         </div>
 
         <div class="pure-control-group">
             <label for="password">Password</label>
-            <input id="password" type="password" placeholder="Password" name = "password">
+            <input id="password" type="password" placeholder="Password" name = "password" required>
         </div>
 		<div>
             <button type="submit" class="pure-button pure-button-primary">Submit</button>
