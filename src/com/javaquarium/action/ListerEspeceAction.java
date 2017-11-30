@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.business.IPoissonService;
-import com.javaquarium.business.PoissonService;
 
 /**
  * Classic Action
@@ -38,9 +37,10 @@ public class ListerEspeceAction extends Action {
 		return mapping.findForward(FW_SUCCESS);
 
 	}
-	
+
 	/**
-	 * @param poissonService the poissonService to set
+	 * @param poissonService
+	 *            the poissonService to set
 	 */
 	public void setPoissonService(IPoissonService poissonService) {
 		this.poissonService = poissonService;
