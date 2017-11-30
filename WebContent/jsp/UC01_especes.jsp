@@ -17,7 +17,7 @@
 <body>
 	<h1>
 		<bean:message key="message.bienvenue" />
-		<bean:write name = "loginForm" property = "user" />
+		<%= session.getAttribute("user_name") %>
 	</h1>
 
 	<table class="pure-table">
