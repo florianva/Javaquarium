@@ -21,6 +21,7 @@ public class LoginAction extends Action {
 
 	private static final String FW_SUCCESS = "success";
 	private static final String FW_FAILED = "failed";
+	public static final String SESSION_USER_NAME = "user_name";
 
 	@Override
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
@@ -29,6 +30,7 @@ public class LoginAction extends Action {
 		final LoginVO loginForm = (LoginVO) form;
 		if (loginForm != null) {
 			if (loginForm.getUser().equals(loginForm.getPassword())) {
+				request.getSession().setAttribute(SESSION_USER_NAME, loginForm.getUser());
 				return mapping.findForward(FW_SUCCESS);
 			} else {
 				return mapping.findForward(FW_FAILED);
