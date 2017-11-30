@@ -13,6 +13,7 @@ import com.javaquarium.util.HibernateUtils;
 @SuppressWarnings("unchecked")
 public class PoissonDAO implements IPoissonDAO {
 
+	@Override
 	public void insert(PoissonDO poisson) {
 		final Session s = HibernateUtils.getSession();
 		final Transaction t = s.beginTransaction();
@@ -23,6 +24,24 @@ public class PoissonDAO implements IPoissonDAO {
 		s.close();
 	}
 
+	@Override
+	public List<PoissonDO> getByNom(final String nom) {
+		final Session s = HibernateUtils.getSession();
+		final Transaction tx = s.beginTransaction();
+
+		Query q = s.createQuery("From PoissonDO as p where p.nom like ?");
+		q.setString(0, "%" + nom + "%");
+
+		final ArrayList<PoissonDO> list = (ArrayList<PoissonDO>) q.list();
+
+		tx.commit();
+		s.close();
+
+		return list;
+
+	}
+
+	@Override
 	public List<PoissonDO> list() {
 		final Session s = HibernateUtils.getSession();
 		final Transaction tx = s.beginTransaction();
@@ -34,6 +53,5 @@ public class PoissonDAO implements IPoissonDAO {
 		s.close();
 
 		return list;
-
 	}
 }
