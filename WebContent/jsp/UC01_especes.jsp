@@ -19,7 +19,15 @@
 		<bean:message key="message.bienvenue" />
 		<%= session.getAttribute("user_name") %>
 	</h1>
-
+	
+	<div class="pure-menu pure-menu-horizontal">
+	    <ul class="pure-menu-list">
+	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><bean:message key="menu.monaquarium" /> (0)</a></li>
+	        <li class="pure-menu-item pure-menu-disabled"><bean:message key="menu.save" /></li>
+	        <li class="pure-menu-item pure-menu-disabled"><bean:message key="menu.vider" /></li>
+	    </ul>
+	</div>
+	
 	<table class="pure-table">
 		<thead>
 			<tr>
