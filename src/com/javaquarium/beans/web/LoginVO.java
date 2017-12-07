@@ -15,6 +15,11 @@ public class LoginVO extends ActionForm {
 	private String user;
 	private String password;
 
+	public LoginVO() {
+		user = new String();
+		password = new String();
+	}
+
 	/**
 	 * @return the user
 	 */

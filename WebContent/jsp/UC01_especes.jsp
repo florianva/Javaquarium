@@ -45,7 +45,6 @@
 			<logic:iterate name="<%= ListerEspeceAction.SESSION_LIST_POISSON %>"
 				id="MonPoisson">
 				<tr>
-
 					<td><bean:write name="MonPoisson" property="nom" /></td>
 					<td><bean:write name="MonPoisson" property="description" /></td>
 					<td><bean:write name="MonPoisson" property="couleur" /></td>
@@ -53,7 +52,7 @@
 					<td><bean:write name="MonPoisson" property="prix" /></td>
 					<td><a href=""> <bean:message key="tableau.lien.details" />
 					</a></td>
-					<td><a href=""> <bean:message key="tableau.lien.ajouter" />
+					<td><a href="/Javaquarium/ajoutPoissonDansAquarium.do"> <bean:message key="tableau.lien.ajouter" />
 					</a> <a href=""> <bean:message key="tableau.lien.retirer" />
 					</a></td>
 

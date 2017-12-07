@@ -1,5 +1,6 @@
 package com.javaquarium.beans.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts.action.ActionForm;
@@ -16,6 +17,11 @@ public class AquariumVO extends ActionForm {
 
 	private String nomAquarium;
 	private List<String> poissons;
+
+	public AquariumVO() {
+		this.nomAquarium = new String();
+		this.poissons = new ArrayList<>();
+	}
 
 	/**
 	 * @return the nomAquarium
