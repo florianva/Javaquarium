@@ -16,4 +16,6 @@ public interface IAquariumService {
 	 */
 	AquariumVO getAquarium(int userId); // todo : update when user system will be operational
 
+	void addPoisson(int userId);
+
 }

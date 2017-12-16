@@ -29,10 +29,12 @@ public class AjoutPoissonDansAquariumAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
-		final IAquariumService service = new AquariumService();
-		final AquariumVO aquarium = service.getAquarium(1); // todo : update when user system will be OP
+		final int userId = 1;// todo : update when user system will be OP
 
-		aquarium.getPoissons().add("toto");
+		final IAquariumService service = new AquariumService();
+		service.addPoisson(userId);
+
+		final AquariumVO aquarium = service.getAquarium(userId);
 
 		request.getSession().setAttribute(SESSION_USER_AQUARIUM, aquarium);
 		request.getSession().setAttribute(SESSION_USER_NB_POISSON, aquarium.getPoissons().size());

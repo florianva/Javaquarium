@@ -16,4 +16,10 @@ public class AquariumService implements IAquariumService {
 		return new AquariumVO();
 	}
 
+	@Override
+	public void addPoisson(int userId) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
