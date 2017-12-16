@@ -22,9 +22,6 @@ public class AquariumDO {
 	@Column(name = "id")
 	private Integer identifiant;
 
-	@Column(name = "nom")
-	private String nom;
-
 	@Column(name = "userId")
 	private Integer utilisateur;
 
@@ -41,21 +38,6 @@ public class AquariumDO {
 	 */
 	public void setIdentifiant(Integer identifiant) {
 		this.identifiant = identifiant;
-	}
-
-	/**
-	 * @return the nom
-	 */
-	public String getNom() {
-		return nom;
-	}
-
-	/**
-	 * @param nom
-	 *            the nom to set
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
 	}
 
 	/**
