@@ -1,10 +1,13 @@
 package com.javaquarium.beans.data;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +27,24 @@ public class AquariumDO {
 
 	@Column(name = "userId")
 	private Integer utilisateur;
+
+	@OneToMany(mappedBy = "aquarium")
+	private Set<PoissonDO> poissons;
+
+	/**
+	 * @return the poissons
+	 */
+	public Set<PoissonDO> getPoissons() {
+		return poissons;
+	}
+
+	/**
+	 * @param poissons
+	 *            the poissons to set
+	 */
+	public void setPoissons(Set<PoissonDO> poissons) {
+		this.poissons = poissons;
+	}
 
 	/**
 	 * @return the identifiant

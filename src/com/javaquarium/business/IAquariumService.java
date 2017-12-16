@@ -14,8 +14,8 @@ public interface IAquariumService {
 	 * @param userId
 	 * @return the aquarium of the user
 	 */
-	AquariumVO getAquarium(int userId); // todo : update when user system will be operational
+	AquariumVO getAquarium(final int userId); // todo : update when user system will be operational
 
-	void addPoisson(int userId);
+	void addPoisson(final int userId, final String poissonname);
 
 }

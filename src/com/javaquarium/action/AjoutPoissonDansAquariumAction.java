@@ -32,7 +32,7 @@ public class AjoutPoissonDansAquariumAction extends Action {
 		final int userId = 1;// todo : update when user system will be OP
 
 		final IAquariumService service = new AquariumService();
-		service.addPoisson(userId);
+		service.addPoisson(userId, "toto");
 
 		final AquariumVO aquarium = service.getAquarium(userId);
 

@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.javaquarium.beans.data.PoissonDO;
 
+/**
+ * Classic Dao
+ * 
+ * @author florian
+ */
 public interface IPoissonDAO {
 	public void insert(PoissonDO poisson);
 

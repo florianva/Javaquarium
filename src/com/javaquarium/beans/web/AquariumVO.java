@@ -15,27 +15,10 @@ public class AquariumVO extends ActionForm {
 
 	private static final long serialVersionUID = -2663549144418124947L;
 
-	private String nomAquarium;
 	private List<String> poissons;
 
 	public AquariumVO() {
-		this.nomAquarium = new String();
 		this.poissons = new ArrayList<>();
-	}
-
-	/**
-	 * @return the nomAquarium
-	 */
-	public String getNomAquarium() {
-		return nomAquarium;
-	}
-
-	/**
-	 * @param nomAquarium
-	 *            the nomAquarium to set
-	 */
-	public void setNomAquarium(String nomAquarium) {
-		this.nomAquarium = nomAquarium;
 	}
 
 	/**
