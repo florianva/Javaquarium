@@ -21,5 +21,6 @@
         <property name="use_sql_comments">true</property>
     
         <mapping class="com.javaquarium.beans.data.PoissonDO" />
+        <mapping class="com.javaquarium.beans.data.AquariumDO" />
     	</session-factory>
 	</hibernate-configuration>
