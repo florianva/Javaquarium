@@ -1,6 +1,7 @@
 package com.javaquarium.business;
 
 import com.javaquarium.beans.data.AquariumDO;
+import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.beans.web.AquariumVO;
 import com.javaquarium.dao.AquariumDAO;
 import com.javaquarium.dao.IAquariumDAO;
@@ -21,11 +22,15 @@ public class AquariumService implements IAquariumService {
 
 	@Override
 	public AquariumVO getAquarium(final int userId) {
-		// TODO : create aquarium if not exist yet
+		AquariumDO aquado = dao.findOneByUser(userId);
 
-		AquariumVO aqua = convert(dao.findOneByUser(userId));
+		if (aquado == null) {
+			aquado = new AquariumDO();
+			aquado.setUtilisateur(userId);
 
-		return aqua == null ? new AquariumVO() : aqua;
+			dao.create(aquado);
+		}
+		return convert(aquado);
 	}
 
 	@Override
@@ -36,6 +41,14 @@ public class AquariumService implements IAquariumService {
 
 	public AquariumVO convert(AquariumDO aquaDo) {
 		AquariumVO vo = new AquariumVO();
+
+		try {
+			for (PoissonDO p : aquaDo.getPoissons()) {
+				vo.getPoissons().add(p.getNom());
+			}
+		} catch (Exception e) {
+
+		}
 
 		return vo;
 	}

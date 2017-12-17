@@ -44,7 +44,6 @@ public class PoissonDO {
 	/**
 	 * @return the aquarium
 	 */
-
 	public AquariumDO getAquarium() {
 		return aquarium;
 	}

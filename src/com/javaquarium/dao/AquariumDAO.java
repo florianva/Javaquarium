@@ -11,8 +11,13 @@ public class AquariumDAO implements IAquariumDAO {
 
 	@Override
 	public void create(AquariumDO aquarium) {
-		// TODO Auto-generated method stub
+		final Session s = HibernateUtils.getSession();
+		final Transaction t = s.beginTransaction();
 
+		s.save(aquarium);
+
+		t.commit();
+		s.close();
 	}
 
 	@Override
@@ -26,7 +31,7 @@ public class AquariumDAO implements IAquariumDAO {
 		final Session s = HibernateUtils.getSession();
 		final Transaction tx = s.beginTransaction();
 
-		Query q = s.createQuery("From AquariumDO as p where p.id like ?");
+		Query q = s.createQuery("From AquariumDO as p where p.utilisateur like ?");
 		q.setInteger(0, userId);
 
 		final AquariumDO aquarium = (AquariumDO) q.uniqueResult();
