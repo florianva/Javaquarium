@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,25 +34,6 @@ public class PoissonDO {
 
 	@Column(name = "prix")
 	private Integer prix;
-
-	@ManyToOne
-	@JoinColumn(name = "aquarium", nullable = true)
-	private AquariumDO aquarium;
-
-	/**
-	 * @return the aquarium
-	 */
-	public AquariumDO getAquarium() {
-		return aquarium;
-	}
-
-	/**
-	 * @param aquarium
-	 *            the aquarium to set
-	 */
-	public void setAquarium(AquariumDO aquarium) {
-		this.aquarium = aquarium;
-	}
 
 	/**
 	 * @return the code
