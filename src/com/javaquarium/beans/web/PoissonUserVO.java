@@ -11,20 +11,20 @@ import org.apache.struts.action.ActionForm;
  * @author Geoffrey
  *
  */
-public class AquariumVO extends ActionForm {
+public class PoissonUserVO extends ActionForm {
 
 	private static final long serialVersionUID = -2663549144418124947L;
 
-	private List<String> poissons;
+	private List<PoissonVO> poissons;
 
-	public AquariumVO() {
-		this.poissons = new ArrayList<>();
+	public PoissonUserVO() {
+		this.setPoissons(new ArrayList<PoissonVO>());
 	}
 
 	/**
 	 * @return the poissons
 	 */
-	public List<String> getPoissons() {
+	public List<PoissonVO> getPoissons() {
 		return poissons;
 	}
 
@@ -32,7 +32,7 @@ public class AquariumVO extends ActionForm {
 	 * @param poissons
 	 *            the poissons to set
 	 */
-	public void setPoissons(List<String> poissons) {
+	public void setPoissons(List<PoissonVO> poissons) {
 		this.poissons = poissons;
 	}
 

@@ -8,7 +8,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.javaquarium.beans.web.AquariumVO;
+import com.javaquarium.beans.web.PoissonUserVO;
 import com.javaquarium.beans.web.LoginVO;
 import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
@@ -35,7 +35,7 @@ public class LoginAction extends Action {
 		serviceAquarium = new AquariumService();
 
 		final LoginVO loginForm = (LoginVO) form;
-		final AquariumVO aquarium = serviceAquarium.getAquarium(1); // todo : update when user system will be OP
+		final PoissonUserVO aquarium = serviceAquarium.getAquarium(1); // todo : update when user system will be OP
 
 		if (loginForm != null) {
 			if (loginForm.getUser().equals(loginForm.getPassword())) {

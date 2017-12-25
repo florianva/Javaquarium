@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Aquarium")
-public class AquariumDO {
+public class PoissonUserDO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
