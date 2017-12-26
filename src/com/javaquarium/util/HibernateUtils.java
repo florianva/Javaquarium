@@ -6,9 +6,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
- * Unique point d'accès à la base de données via {@link Session}.
- * 
- * Recommandé par l'équipe Hibernate
+ * Unique point d'acces a la base de donnÃ©es via {@link Session}. Recommande par
+ * l'Ã©quipe Hibernate
  * 
  * @author Max
  * 
@@ -19,13 +18,17 @@ public class HibernateUtils {
 	// Singleton
 	private static final SessionFactory sessionFactory;
 
-	// Crée une unique instance de la SessionFactory à partir de
+	private HibernateUtils() {
+		throw new IllegalStateException("Utility class");
+	}
+
+	// Cree une unique instance de la SessionFactory a partir de
 	// hibernate.cfg.xml
 	static {
 		try {
 			sessionFactory = new Configuration().configure().buildSessionFactory();
 		} catch (final HibernateException ex) {
-			throw new RuntimeException("Problème de configuration : " + ex.getMessage(), ex);
+			throw new RuntimeException("Probleme de configuration : " + ex.getMessage(), ex);
 		}
 	}
 

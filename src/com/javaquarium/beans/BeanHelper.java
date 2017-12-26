@@ -17,6 +17,10 @@ import com.javaquarium.beans.web.PoissonVO;
  */
 public class BeanHelper {
 
+	private BeanHelper() {
+		throw new IllegalStateException("Utility class");
+	}
+
 	/**
 	 * convert PoissonDO to PoissonVO
 	 */
