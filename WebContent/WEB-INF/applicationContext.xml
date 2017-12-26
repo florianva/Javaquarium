@@ -20,6 +20,8 @@
  	<bean name="/login" class="com.javaquarium.action.LoginAction" singleton="true"/>
  	
  	<bean name="/ajoutPoissonDansAquarium" class="com.javaquarium.action.AjoutPoissonDansAquariumAction" singleton="true"/>
+ 	
+ 	<bean name="/retirerPoissonDansAquarium" class="com.javaquarium.action.SupprimerPoissonDansAquariumAction" singleton="true"/>
 
 </beans>
 

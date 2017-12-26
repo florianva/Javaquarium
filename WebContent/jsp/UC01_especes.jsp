@@ -45,24 +45,34 @@
 			<logic:iterate name="<%= ListerEspeceAction.SESSION_LIST_POISSON %>"
 				id="MonPoisson">
 				<tr>
-					<form action="/Javaquarium/ajoutPoissonDansAquarium.do" method="post">
+					
 						<td><bean:write name="MonPoisson" property="nom" /></td>
-						<input type="hidden" name="nom" value='<bean:write name="MonPoisson" property="nom" />' />
 						<td><bean:write name="MonPoisson" property="description" /></td>
-						<input type="hidden" name="description" value='<bean:write name="MonPoisson" property="description" />' />
 						<td><bean:write name="MonPoisson" property="couleur" /></td>
-						<input type="hidden" name="couleur" value='<bean:write name="MonPoisson" property="couleur" />' />
 						<td><bean:write name="MonPoisson" property="dimension" /></td>
-						<input type="hidden" name="dimension" value='<bean:write name="MonPoisson" property="dimension" />' />
 						<td><bean:write name="MonPoisson" property="prix" /></td>
-						<input type="hidden" name="prix" value='<bean:write name="MonPoisson" property="prix" />' />
 						<td><a href="#"> <bean:message key="tableau.lien.details" /></a></td>
-						<input type="hidden" name="code" value='<bean:write name="MonPoisson" property="code" />' />
 						<td>
+						<form action="/Javaquarium/ajoutPoissonDansAquarium.do" method="post">
+							<input type="hidden" name="nom" value='<bean:write name="MonPoisson" property="nom" />' />
+							<input type="hidden" name="description" value='<bean:write name="MonPoisson" property="description" />' />
+							<input type="hidden" name="couleur" value='<bean:write name="MonPoisson" property="couleur" />' />
+							<input type="hidden" name="dimension" value='<bean:write name="MonPoisson" property="dimension" />' />
+							<input type="hidden" name="prix" value='<bean:write name="MonPoisson" property="prix" />' />
+							<input type="hidden" name="code" value='<bean:write name="MonPoisson" property="code" />' />
 							<input type="submit" value='<bean:message key="tableau.lien.ajouter" />'/>
-							<a href=""> <bean:message key="tableau.lien.retirer" /></a>
+						</form>
+						<form action="/Javaquarium/retirerPoissonDansAquarium.do" method="post">
+							<input type="hidden" name="nom" value='<bean:write name="MonPoisson" property="nom" />' />
+							<input type="hidden" name="description" value='<bean:write name="MonPoisson" property="description" />' />
+							<input type="hidden" name="couleur" value='<bean:write name="MonPoisson" property="couleur" />' />
+							<input type="hidden" name="dimension" value='<bean:write name="MonPoisson" property="dimension" />' />
+							<input type="hidden" name="prix" value='<bean:write name="MonPoisson" property="prix" />' />
+							<input type="hidden" name="code" value='<bean:write name="MonPoisson" property="code" />' />
+							<input type="submit" value='<bean:message key="tableau.lien.retirer" />'/>
+						</form>
 						</td>
-					</form>
+					
 				</tr>
 			</logic:iterate>
 		</tbody>

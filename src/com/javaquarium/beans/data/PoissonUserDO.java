@@ -1,6 +1,5 @@
 package com.javaquarium.beans.data;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +27,7 @@ public class PoissonUserDO {
 	@Column(name = "userId")
 	private Integer utilisateur;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "poisson")
 	private PoissonDO poisson;
 

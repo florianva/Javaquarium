@@ -24,4 +24,12 @@ public interface IAquariumService {
 	 */
 	void addPoisson(final PoissonUserVO aquariumvo, final int userId);
 
+	/**
+	 * 
+	 * @param aquariumvo
+	 * @param poisson
+	 * @return void
+	 */
+	void removePoisson(int poissonid, int userId);
+
 }
