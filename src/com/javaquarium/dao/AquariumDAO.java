@@ -39,4 +39,23 @@ public class AquariumDAO implements IAquariumDAO {
 		return aquarium;
 	}
 
+	@Override
+	public void delete(int userId, int poissonId) {
+		final Session s = HibernateUtils.getSession();
+		final Transaction tx = s.beginTransaction();
+
+		Query q = s.createQuery("From PoissonUserDO as p where p.utilisateur = :user and p.poisson = :poisson");
+		q.setInteger("user", userId);
+		q.setInteger("poisson", poissonId);
+
+		PoissonUserDO poisson = (PoissonUserDO) q.setMaxResults(1).uniqueResult();
+		if (poisson != null) {
+			s.delete(poisson);
+		}
+
+		tx.commit();
+		s.close();
+
+	}
+
 }
