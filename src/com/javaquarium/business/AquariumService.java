@@ -24,13 +24,13 @@ public class AquariumService implements IAquariumService {
 
 	@Override
 	public PoissonUserVO getAquarium(final int userId) {
-		return BeanHelper.mapToVo(dao.findByUser(userId));
+		return BeanHelper.map(dao.findByUser(userId));
 	}
 
 	@Override
 	public void addPoisson(final PoissonUserVO aquariumvo, final int userId) {
 
-		final List<PoissonUserDO> aquarium = BeanHelper.mapToDo(aquariumvo);
+		final List<PoissonUserDO> aquarium = BeanHelper.map(aquariumvo);
 
 		PoissonUserDO poissonUserDO = aquarium.get(aquarium.size() - 1);
 		poissonUserDO.setUtilisateur(userId);

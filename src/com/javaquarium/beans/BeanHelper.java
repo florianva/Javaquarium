@@ -20,7 +20,7 @@ public class BeanHelper {
 	/**
 	 * convert PoissonDO to PoissonVO
 	 */
-	public static PoissonVO mapToVO(final PoissonDO d) {
+	public static PoissonVO map(final PoissonDO d) {
 		final PoissonVO poissonVO = new PoissonVO();
 		poissonVO.setCode(d.getCode());
 		poissonVO.setNom(d.getNom());
@@ -34,7 +34,7 @@ public class BeanHelper {
 	/**
 	 * convert PoissonVO to PoissonDO
 	 */
-	public static PoissonDO mapToDO(final PoissonVO vo) {
+	public static PoissonDO map(final PoissonVO vo) {
 		final PoissonDO poissonDO = new PoissonDO();
 		if (vo.getCode() != null) {
 			poissonDO.setCode(vo.getCode());
@@ -53,20 +53,20 @@ public class BeanHelper {
 	 * 
 	 * convert list of poissonUserDo to PoissonUserVo
 	 */
-	public static PoissonUserVO mapToVo(List<PoissonUserDO> dos) {
+	public static PoissonUserVO map(List<PoissonUserDO> dos) {
 		PoissonUserVO vo = new PoissonUserVO();
 
 		for (PoissonUserDO aquaDo : dos) {
-			vo.getPoissons().add(BeanHelper.mapToVO(aquaDo.getPoisson()));
+			vo.getPoissons().add(BeanHelper.map(aquaDo.getPoisson()));
 		}
 		return vo;
 	}
 
-	public static List<PoissonUserDO> mapToDo(PoissonUserVO vo) {
+	public static List<PoissonUserDO> map(PoissonUserVO vo) {
 		List<PoissonUserDO> dos = new ArrayList<>();
 		for (PoissonVO poisson : vo.getPoissons()) {
 			PoissonUserDO poissonUserDO = new PoissonUserDO();
-			poissonUserDO.setPoisson(mapToDO(poisson));
+			poissonUserDO.setPoisson(map(poisson));
 			dos.add(poissonUserDO);
 		}
 		return dos;

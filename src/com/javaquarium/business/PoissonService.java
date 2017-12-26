@@ -25,7 +25,7 @@ public class PoissonService implements IPoissonService {
 		// final PoissonDAO poissonDAO = new PoissonDAO();
 
 		for (PoissonDO poissonDO : poissonDao.list()) {
-			listPoissons.add(BeanHelper.mapToVO(poissonDO));
+			listPoissons.add(BeanHelper.map(poissonDO));
 		}
 
 		return listPoissons;
@@ -37,7 +37,7 @@ public class PoissonService implements IPoissonService {
 		final List<PoissonVO> listPoissons = new LinkedList<PoissonVO>();
 
 		for (PoissonDO poissonDO : poissonDao.getByNom(poisson.getNom())) {
-			listPoissons.add(BeanHelper.mapToVO(poissonDO));
+			listPoissons.add(BeanHelper.map(poissonDO));
 		}
 
 		return listPoissons.isEmpty();
@@ -46,7 +46,7 @@ public class PoissonService implements IPoissonService {
 	@Override
 	public void save(PoissonVO poissonForm) {
 		// final PoissonDAO poissonDAO = new PoissonDAO();
-		poissonDao.insert(BeanHelper.mapToDO(poissonForm));
+		poissonDao.insert(BeanHelper.map(poissonForm));
 	}
 
 	/**
