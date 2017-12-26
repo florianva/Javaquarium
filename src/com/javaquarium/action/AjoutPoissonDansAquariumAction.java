@@ -36,10 +36,12 @@ public class AjoutPoissonDansAquariumAction extends Action {
 		final PoissonUserVO aquarium = service.getAquarium(userId);
 		final PoissonVO poisson = (PoissonVO) form;
 
-		service.addPoisson(aquarium, poisson);
+		aquarium.getPoissons().add(poisson);
+
+		service.addPoisson(aquarium, userId);
 
 		request.getSession().setAttribute(SESSION_USER_AQUARIUM, aquarium);
-		request.getSession().setAttribute(SESSION_USER_NB_POISSON, aquarium.getPoissons().size() + 1);
+		request.getSession().setAttribute(SESSION_USER_NB_POISSON, aquarium.getPoissons().size());
 
 		return mapping.findForward(FW_SUCCESS);
 	}

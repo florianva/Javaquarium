@@ -1,5 +1,6 @@
 package com.javaquarium.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.javaquarium.beans.data.PoissonDO;
@@ -21,6 +22,7 @@ public class BeanHelper {
 	 */
 	public static PoissonVO mapToVO(final PoissonDO d) {
 		final PoissonVO poissonVO = new PoissonVO();
+		poissonVO.setCode(d.getCode());
 		poissonVO.setNom(d.getNom());
 		poissonVO.setDescription(d.getDescription());
 		poissonVO.setCouleur(d.getCouleur());
@@ -34,6 +36,9 @@ public class BeanHelper {
 	 */
 	public static PoissonDO mapToDO(final PoissonVO vo) {
 		final PoissonDO poissonDO = new PoissonDO();
+		if (vo.getCode() != null) {
+			poissonDO.setCode(vo.getCode());
+		}
 		poissonDO.setNom(vo.getNom());
 		poissonDO.setDescription(vo.getDescription());
 		poissonDO.setCouleur(vo.getCouleur());
@@ -55,5 +60,15 @@ public class BeanHelper {
 			vo.getPoissons().add(BeanHelper.mapToVO(aquaDo.getPoisson()));
 		}
 		return vo;
+	}
+
+	public static List<PoissonUserDO> mapToDo(PoissonUserVO vo) {
+		List<PoissonUserDO> dos = new ArrayList<>();
+		for (PoissonVO poisson : vo.getPoissons()) {
+			PoissonUserDO poissonUserDO = new PoissonUserDO();
+			poissonUserDO.setPoisson(mapToDO(poisson));
+			dos.add(poissonUserDO);
+		}
+		return dos;
 	}
 }

@@ -1,8 +1,10 @@
 package com.javaquarium.business;
 
+import java.util.List;
+
 import com.javaquarium.beans.BeanHelper;
+import com.javaquarium.beans.data.PoissonUserDO;
 import com.javaquarium.beans.web.PoissonUserVO;
-import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.dao.AquariumDAO;
 import com.javaquarium.dao.IAquariumDAO;
 
@@ -22,14 +24,18 @@ public class AquariumService implements IAquariumService {
 
 	@Override
 	public PoissonUserVO getAquarium(final int userId) {
-
 		return BeanHelper.mapToVo(dao.findByUser(userId));
 	}
 
 	@Override
-	public void addPoisson(final PoissonUserVO aquariumvo, final PoissonVO poisson) {
+	public void addPoisson(final PoissonUserVO aquariumvo, final int userId) {
 
-		// dao.add(aquarium);
+		final List<PoissonUserDO> aquarium = BeanHelper.mapToDo(aquariumvo);
+
+		PoissonUserDO poissonUserDO = aquarium.get(aquarium.size() - 1);
+		poissonUserDO.setUtilisateur(userId);
+
+		dao.add(poissonUserDO);
 
 	}
 

@@ -1,7 +1,6 @@
 package com.javaquarium.business;
 
 import com.javaquarium.beans.web.PoissonUserVO;
-import com.javaquarium.beans.web.PoissonVO;
 
 /**
  * Classic Service Interface
@@ -23,6 +22,6 @@ public interface IAquariumService {
 	 * @param poisson
 	 * @return void
 	 */
-	void addPoisson(final PoissonUserVO aquariumvo, final PoissonVO poisson);
+	void addPoisson(final PoissonUserVO aquariumvo, final int userId);
 
 }
