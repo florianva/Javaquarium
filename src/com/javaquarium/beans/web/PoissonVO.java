@@ -16,6 +16,7 @@ import org.apache.struts.action.ActionMessage;
 public class PoissonVO extends ActionForm {
 
 	private static final long serialVersionUID = -3671164395721040986L;
+	private Integer code;
 	private String nom;
 	private String description;
 	private String couleur;
@@ -122,6 +123,20 @@ public class PoissonVO extends ActionForm {
 
 		return errors;
 
+	}
+
+	/**
+	 * @return the code
+	 */
+	public Integer getCode() {
+		return code;
+	}
+
+	/**
+	 * @param code the code to set
+	 */
+	public void setCode(Integer code) {
+		this.code = code;
 	}
 
 }

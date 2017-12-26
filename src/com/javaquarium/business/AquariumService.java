@@ -1,8 +1,10 @@
 package com.javaquarium.business;
 
-import com.javaquarium.beans.data.AquariumDO;
-import com.javaquarium.beans.data.PoissonDO;
-import com.javaquarium.beans.web.AquariumVO;
+import java.util.List;
+
+import com.javaquarium.beans.BeanHelper;
+import com.javaquarium.beans.data.PoissonUserDO;
+import com.javaquarium.beans.web.PoissonUserVO;
 import com.javaquarium.dao.AquariumDAO;
 import com.javaquarium.dao.IAquariumDAO;
 
@@ -21,36 +23,20 @@ public class AquariumService implements IAquariumService {
 	}
 
 	@Override
-	public AquariumVO getAquarium(final int userId) {
-		AquariumDO aquado = dao.findOneByUser(userId);
-
-		if (aquado == null) {
-			aquado = new AquariumDO();
-			aquado.setUtilisateur(userId);
-
-			dao.create(aquado);
-		}
-		return convert(aquado);
+	public PoissonUserVO getAquarium(final int userId) {
+		return BeanHelper.mapToVo(dao.findByUser(userId));
 	}
 
 	@Override
-	public void addPoisson(final int userId, final String poissonname) {
-		// TODO Auto-generated method stub
+	public void addPoisson(final PoissonUserVO aquariumvo, final int userId) {
 
-	}
+		final List<PoissonUserDO> aquarium = BeanHelper.mapToDo(aquariumvo);
 
-	public AquariumVO convert(AquariumDO aquaDo) {
-		AquariumVO vo = new AquariumVO();
+		PoissonUserDO poissonUserDO = aquarium.get(aquarium.size() - 1);
+		poissonUserDO.setUtilisateur(userId);
 
-		try {
-			for (PoissonDO p : aquaDo.getPoissons()) {
-				vo.getPoissons().add(p.getNom());
-			}
-		} catch (Exception e) {
+		dao.add(poissonUserDO);
 
-		}
-
-		return vo;
 	}
 
 }

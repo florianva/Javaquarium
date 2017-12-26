@@ -1,6 +1,8 @@
 package com.javaquarium.dao;
 
-import com.javaquarium.beans.data.AquariumDO;
+import java.util.List;
+
+import com.javaquarium.beans.data.PoissonUserDO;
 
 /**
  * Classic Dao
@@ -8,9 +10,7 @@ import com.javaquarium.beans.data.AquariumDO;
  * @author geoffrey
  */
 public interface IAquariumDAO {
-	public void create(AquariumDO aquarium);
+	public void add(final PoissonUserDO aquarium);
 
-	public void update(AquariumDO aquarium);
-
-	public AquariumDO findOneByUser(int userId);
+	public List<PoissonUserDO> findByUser(final int userId);
 }

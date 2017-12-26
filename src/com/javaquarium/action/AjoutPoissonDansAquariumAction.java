@@ -8,7 +8,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.javaquarium.beans.web.AquariumVO;
+import com.javaquarium.beans.web.PoissonUserVO;
+import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
 
@@ -32,9 +33,12 @@ public class AjoutPoissonDansAquariumAction extends Action {
 		final int userId = 1;// todo : update when user system will be OP
 
 		final IAquariumService service = new AquariumService();
-		service.addPoisson(userId, "toto");
+		final PoissonUserVO aquarium = service.getAquarium(userId);
+		final PoissonVO poisson = (PoissonVO) form;
 
-		final AquariumVO aquarium = service.getAquarium(userId);
+		aquarium.getPoissons().add(poisson);
+
+		service.addPoisson(aquarium, userId);
 
 		request.getSession().setAttribute(SESSION_USER_AQUARIUM, aquarium);
 		request.getSession().setAttribute(SESSION_USER_NB_POISSON, aquarium.getPoissons().size());

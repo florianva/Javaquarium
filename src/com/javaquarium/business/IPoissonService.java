@@ -2,7 +2,6 @@ package com.javaquarium.business;
 
 import java.util.List;
 
-import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.beans.web.PoissonVO;
 
 /**
@@ -23,9 +22,5 @@ public interface IPoissonService {
 	Boolean isExist(PoissonVO poissonForm);
 
 	void save(PoissonVO poissonForm);
-
-	PoissonVO mapToVO(final PoissonDO d);
-
-	PoissonDO mapToDO(final PoissonVO d);
 
 }

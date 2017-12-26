@@ -1,13 +1,13 @@
 package com.javaquarium.beans.data;
 
-import java.util.Set;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Aquarium")
-public class AquariumDO {
+public class PoissonUserDO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,23 +28,9 @@ public class AquariumDO {
 	@Column(name = "userId")
 	private Integer utilisateur;
 
-	@OneToMany(mappedBy = "aquarium")
-	private Set<PoissonDO> poissons;
-
-	/**
-	 * @return the poissons
-	 */
-	public Set<PoissonDO> getPoissons() {
-		return poissons;
-	}
-
-	/**
-	 * @param poissons
-	 *            the poissons to set
-	 */
-	public void setPoissons(Set<PoissonDO> poissons) {
-		this.poissons = poissons;
-	}
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "poisson")
+	private PoissonDO poisson;
 
 	/**
 	 * @return the identifiant
@@ -59,6 +45,21 @@ public class AquariumDO {
 	 */
 	public void setIdentifiant(Integer identifiant) {
 		this.identifiant = identifiant;
+	}
+
+	/**
+	 * @return the poisson
+	 */
+	public PoissonDO getPoisson() {
+		return poisson;
+	}
+
+	/**
+	 * @param poisson
+	 *            the poisson to set
+	 */
+	public void setPoisson(PoissonDO poisson) {
+		this.poisson = poisson;
 	}
 
 	/**
