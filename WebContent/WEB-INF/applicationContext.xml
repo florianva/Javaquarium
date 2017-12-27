@@ -22,6 +22,8 @@
  	<bean name="/ajoutPoissonDansAquarium" class="com.javaquarium.action.AjoutPoissonDansAquariumAction" singleton="true"/>
  	
  	<bean name="/retirerPoissonDansAquarium" class="com.javaquarium.action.SupprimerPoissonDansAquariumAction" singleton="true"/>
+ 	
+ 	<bean name="/viderAquarium" class="com.javaquarium.action.ViderAquariumAction" singleton="true"/>
 
 </beans>
 

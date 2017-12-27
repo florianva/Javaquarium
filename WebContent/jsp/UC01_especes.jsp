@@ -19,12 +19,16 @@
 		<bean:message key="message.bienvenue" />
 		<%= session.getAttribute("user_name") %>
 	</h1>
-	
+
 	<div class="pure-menu pure-menu-horizontal">
 	    <ul class="pure-menu-list">
 	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><bean:message key="menu.monaquarium" /> (<%= session.getAttribute("session_user_nb_poisson") %>)</a></li>
-	        <li class="pure-menu-item pure-menu-disabled"><bean:message key="menu.save" /></li>
-	        <li class="pure-menu-item pure-menu-disabled"><bean:message key="menu.vider" /></li>
+			 <li class='pure-menu-item pure-menu-disabled'>
+				 <form action="/Javaquarium/viderAquarium.do" method="post">
+				 	<input type="submit" value='<bean:message key="menu.vider" />'/>
+				 </form>
+			 </li>
+			 
 	    </ul>
 	</div>
 	
@@ -45,7 +49,6 @@
 			<logic:iterate name="<%= ListerEspeceAction.SESSION_LIST_POISSON %>"
 				id="MonPoisson">
 				<tr>
-					
 						<td><bean:write name="MonPoisson" property="nom" /></td>
 						<td><bean:write name="MonPoisson" property="description" /></td>
 						<td><bean:write name="MonPoisson" property="couleur" /></td>

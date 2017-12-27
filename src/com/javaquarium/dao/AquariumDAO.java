@@ -55,7 +55,24 @@ public class AquariumDAO implements IAquariumDAO {
 
 		tx.commit();
 		s.close();
+	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public void clean(int userId) {
+		final Session s = HibernateUtils.getSession();
+		final Transaction tx = s.beginTransaction();
+
+		Query q = s.createQuery("From PoissonUserDO as p where p.utilisateur = :user");
+		q.setInteger("user", userId);
+
+		List<PoissonUserDO> poissons = q.list();
+		for (PoissonUserDO poisson : poissons) {
+			s.delete(poisson);
+		}
+
+		tx.commit();
+		s.close();
 	}
 
 }
