@@ -23,7 +23,6 @@ import com.javaquarium.business.IAquariumService;
 public class AjoutPoissonDansAquariumAction extends Action {
 
 	private static final String FW_SUCCESS = "success";
-	private static final String SESSION_USER_AQUARIUM = "session_user_aquarium";
 	public static final String SESSION_USER_NB_POISSON = "session_user_nb_poisson";
 
 	@Override
@@ -40,7 +39,6 @@ public class AjoutPoissonDansAquariumAction extends Action {
 
 		service.addPoisson(aquarium, userId);
 
-		request.getSession().setAttribute(SESSION_USER_AQUARIUM, aquarium);
 		request.getSession().setAttribute(SESSION_USER_NB_POISSON, aquarium.getPoissons().size());
 
 		return mapping.findForward(FW_SUCCESS);

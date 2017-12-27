@@ -22,7 +22,6 @@ import com.javaquarium.business.IAquariumService;
 public class ViderAquariumAction extends Action {
 
 	private static final String FW_SUCCESS = "success";
-	public static final String SESSION_USER_NB_POISSON = "session_user_nb_poisson";
 
 	@Override
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
@@ -35,7 +34,8 @@ public class ViderAquariumAction extends Action {
 
 		final PoissonUserVO aquarium = service.getAquarium(userId);
 
-		request.getSession().setAttribute(SESSION_USER_NB_POISSON, aquarium.getPoissons().size());
+		request.getSession().setAttribute(AjoutPoissonDansAquariumAction.SESSION_USER_NB_POISSON,
+				aquarium.getPoissons().size());
 
 		return mapping.findForward(FW_SUCCESS);
 	}
