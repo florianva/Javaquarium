@@ -15,4 +15,6 @@ public interface IAquariumDAO {
 	public void delete(final int userId, final int poissonId);
 
 	public List<PoissonUserDO> findByUser(final int userId);
+
+	public void clean(final int userId);
 }

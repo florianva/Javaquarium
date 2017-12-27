@@ -44,4 +44,9 @@ public class AquariumService implements IAquariumService {
 		dao.delete(userId, poissonId);
 	}
 
+	@Override
+	public void clean(int userId) {
+		dao.clean(userId);
+	}
+
 }

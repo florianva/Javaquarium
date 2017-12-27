@@ -19,7 +19,7 @@ public interface IAquariumService {
 	/**
 	 * 
 	 * @param aquariumvo
-	 * @param poisson
+	 * @param userId
 	 * @return void
 	 */
 	void addPoisson(final PoissonUserVO aquariumvo, final int userId);
@@ -27,9 +27,16 @@ public interface IAquariumService {
 	/**
 	 * 
 	 * @param aquariumvo
-	 * @param poisson
+	 * @param userId
 	 * @return void
 	 */
-	void removePoisson(int poissonid, int userId);
+	void removePoisson(final int poissonid, final int userId);
+
+	/**
+	 * 
+	 * @param userId
+	 * @return void
+	 */
+	void clean(final int userId);
 
 }

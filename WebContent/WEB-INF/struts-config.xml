@@ -35,6 +35,10 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<action path="/retirerPoissonDansAquarium" input="/jsp/UC01_especes.jsp" name="poissonForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/listerEspece.do"></forward>	
 		</action>
+		
+		<action path="/viderAquarium" input="/jsp/UC01_especes.jsp" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/listerEspece.do"></forward>	
+		</action>
 	</action-mappings>
 	
 	
