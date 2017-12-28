@@ -2,6 +2,7 @@ package com.javaquarium.business;
 
 import java.util.List;
 
+import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.beans.web.PoissonVO;
 
 /**
