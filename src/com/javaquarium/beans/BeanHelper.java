@@ -3,8 +3,10 @@ package com.javaquarium.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.javaquarium.beans.data.LoginDO;
 import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.beans.data.PoissonUserDO;
+import com.javaquarium.beans.web.LoginVO;
 import com.javaquarium.beans.web.PoissonUserVO;
 import com.javaquarium.beans.web.PoissonVO;
 
@@ -75,4 +77,25 @@ public class BeanHelper {
 		}
 		return dos;
 	}
+
+	/**
+	 * convert LoginDO to LoginVO
+	 */
+	public static LoginVO map(final LoginDO d) {
+		final LoginVO loginVO = new LoginVO();
+		loginVO.setUser(d.getUser());
+		loginVO.setPassword(d.getPassword());
+		return loginVO;
+	}
+
+	/**
+	 * convert LoginVO to LoginDO
+	 */
+	public static LoginDO map(final LoginVO v) {
+		final LoginDO loginDO = new LoginDO();
+		loginDO.setUser(v.getUser());
+		loginDO.setPassword(v.getPassword());
+		return loginDO;
+	}
+
 }

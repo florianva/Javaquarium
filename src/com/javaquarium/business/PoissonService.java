@@ -41,28 +41,6 @@ public class PoissonService implements IPoissonService {
 
 		return listPoissons.isEmpty();
 	}
-
-	public PoissonDO mapToDO(final PoissonVO v) {
-		final PoissonDO poissonDO = new PoissonDO();
-		poissonDO.setNom(v.getNom());
-		poissonDO.setDescription(v.getDescription());
-		poissonDO.setCouleur(v.getCouleur());
-		poissonDO.setPrix(v.getPrix());
-		String[] parts = v.getDimension().split("x");
-		poissonDO.setLongueur(Float.parseFloat(parts[0]));
-		poissonDO.setLargeur(Float.parseFloat(parts[1]));
-		return poissonDO;
-	}
-	
-	public PoissonVO mapToVO(final PoissonDO d) {
-		final PoissonVO poissonVO = new PoissonVO();
-		poissonVO.setNom(d.getNom());
-		poissonVO.setDescription(d.getDescription());
-		poissonVO.setCouleur(d.getCouleur());
-		poissonVO.setPrix(d.getPrix());
-		poissonVO.setDimension(d.getLongueur().toString() + "x" + d.getLargeur().toString());
-		return poissonVO;
-	}
 		
 	@Override
 	public void save(PoissonVO poissonForm) {
