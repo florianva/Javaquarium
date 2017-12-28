@@ -1,0 +1,6 @@
+projectKey=org.javaquarium
+serverUrl=http://localhost:9091
+serverVersion=6.7.0.33306
+dashboardUrl=http://localhost:9091/dashboard/index/org.javaquarium
+ceTaskId=AWB5cjRPJgoibr0SBRLb
+ceTaskUrl=http://localhost:9091/api/ce/task?id=AWB5cjRPJgoibr0SBRLb

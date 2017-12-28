@@ -24,5 +24,5 @@ public interface IPoissonService {
 
 	PoissonVO mapToVO(final PoissonDO d);
 
-	PoissonDO mapToDO(final PoissonVO d);
+	PoissonDO mapToDO(final PoissonVO v);
 }

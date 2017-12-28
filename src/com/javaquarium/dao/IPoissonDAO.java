@@ -5,6 +5,7 @@ import java.util.List;
 import com.javaquarium.beans.data.PoissonDO;
 
 public interface IPoissonDAO {
-	public void insert(PoissonDO poisson);
+	public void insert(final PoissonDO poisson);
+
 	public List<PoissonDO> list();
 }

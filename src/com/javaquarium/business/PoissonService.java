@@ -45,13 +45,13 @@ public class PoissonService implements IPoissonService {
 		return poissonVO;
 	}
 
-	public PoissonDO mapToDO(final PoissonVO vo) {
+	public PoissonDO mapToDO(final PoissonVO v) {
 		final PoissonDO poissonDO = new PoissonDO();
-		poissonDO.setNom(vo.getNom());
-		poissonDO.setDescription(vo.getDescription());
-		poissonDO.setCouleur(vo.getCouleur());
-		poissonDO.setPrix(vo.getPrix());
-		String[] parts = vo.getDimension().split("x");
+		poissonDO.setNom(v.getNom());
+		poissonDO.setDescription(v.getDescription());
+		poissonDO.setCouleur(v.getCouleur());
+		poissonDO.setPrix(v.getPrix());
+		String[] parts = v.getDimension().split("x");
 		poissonDO.setLongueur(Float.parseFloat(parts[0]));
 		poissonDO.setLargeur(Float.parseFloat(parts[1]));
 		return poissonDO;
