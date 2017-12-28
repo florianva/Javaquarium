@@ -23,4 +23,7 @@ public interface IPoissonService {
 
 	void save(PoissonVO poissonForm);
 
+	PoissonVO mapToVO(final PoissonDO d);
+
+	PoissonDO mapToDO(final PoissonVO v);
 }

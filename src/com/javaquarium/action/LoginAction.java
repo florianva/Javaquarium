@@ -12,6 +12,7 @@ import com.javaquarium.beans.web.PoissonUserVO;
 import com.javaquarium.beans.web.LoginVO;
 import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
+import com.javaquarium.business.ILoginService;
 
 /**
  * Classic Action
@@ -22,6 +23,7 @@ import com.javaquarium.business.IAquariumService;
 
 public class LoginAction extends Action {
 
+	private ILoginService loginService;
 	private static final String FW_SUCCESS = "success";
 	private static final String FW_FAILED = "failed";
 	public static final String SESSION_USER_NAME = "user_name";
@@ -35,10 +37,11 @@ public class LoginAction extends Action {
 		serviceAquarium = new AquariumService();
 
 		final LoginVO loginForm = (LoginVO) form;
+		final Boolean userExist = loginService.isExist(loginForm);
 		final PoissonUserVO aquarium = serviceAquarium.getAquarium(1); // todo : update when user system will be OP
 
 		if (loginForm != null) {
-			if (loginForm.getUser().equals(loginForm.getPassword())) {
+			if (userExist == Boolean.TRUE) {
 				request.getSession().setAttribute(SESSION_USER_NAME, loginForm.getUser());
 				request.getSession().setAttribute(AjoutPoissonDansAquariumAction.SESSION_USER_NB_POISSON,
 						aquarium.getPoissons().size());
@@ -50,6 +53,14 @@ public class LoginAction extends Action {
 		} else {
 			return mapping.findForward(FW_FAILED);
 		}
+	}
+
+	/**
+	 * @param loginService
+	 *            the loginService to set
+	 */
+	public void setLoginService(ILoginService loginService) {
+		this.loginService = loginService;
 	}
 
 }

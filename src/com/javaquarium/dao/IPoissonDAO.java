@@ -10,7 +10,7 @@ import com.javaquarium.beans.data.PoissonDO;
  * @author florian
  */
 public interface IPoissonDAO {
-	public void insert(PoissonDO poisson);
+	public void insert(final PoissonDO poisson);
 
 	public List<PoissonDO> list();
 

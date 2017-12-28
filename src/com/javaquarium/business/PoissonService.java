@@ -42,6 +42,16 @@ public class PoissonService implements IPoissonService {
 		return listPoissons.isEmpty();
 	}
 
+	public PoissonDO mapToDO(final PoissonVO v) {
+		final PoissonDO poissonDO = new PoissonDO();
+		poissonDO.setNom(v.getNom());
+		poissonDO.setDescription(v.getDescription());
+		poissonDO.setCouleur(v.getCouleur());
+		poissonDO.setPrix(v.getPrix());
+		String[] parts = v.getDimension().split("x");
+		poissonDO.setLongueur(Float.parseFloat(parts[0]));
+		poissonDO.setLargeur(Float.parseFloat(parts[1]));
+		return poissonDO;
 	@Override
 	public void save(PoissonVO poissonForm) {
 		poissonDao.insert(BeanHelper.map(poissonForm));
