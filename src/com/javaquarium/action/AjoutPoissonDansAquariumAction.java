@@ -10,7 +10,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.beans.web.PoissonUserVO;
 import com.javaquarium.beans.web.PoissonVO;
-import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
 
 /**
@@ -25,23 +24,32 @@ public class AjoutPoissonDansAquariumAction extends Action {
 	private static final String FW_SUCCESS = "success";
 	public static final String SESSION_USER_NB_POISSON = "session_user_nb_poisson";
 
+	private IAquariumService aquariumService;
+
 	@Override
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
 		final int userId = (int) request.getSession().getAttribute(LoginAction.SESSION_USER_ID);
 
-		final IAquariumService service = new AquariumService();
-		final PoissonUserVO aquarium = service.getAquarium(userId);
+		final PoissonUserVO aquarium = aquariumService.getAquarium(userId);
 		final PoissonVO poisson = (PoissonVO) form;
 
 		aquarium.getPoissons().add(poisson);
 
-		service.addPoisson(aquarium, userId);
+		aquariumService.addPoisson(aquarium, userId);
 
 		request.getSession().setAttribute(SESSION_USER_NB_POISSON, aquarium.getPoissons().size());
 
 		return mapping.findForward(FW_SUCCESS);
+	}
+
+	/**
+	 * @param aquariumService
+	 *            the aquariumService to set
+	 */
+	public void setAquariumService(IAquariumService aquariumService) {
+		this.aquariumService = aquariumService;
 	}
 
 }
