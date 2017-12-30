@@ -3,6 +3,7 @@
 
 <beans>
 
+	<!-- Beans DAO -->
 	<bean id="mypoissonDAO" class="com.javaquarium.dao.PoissonDAO"
 		singleton="true" />
 		
@@ -19,6 +20,8 @@
 		</property>
 	</bean>
 
+
+	<!-- Beans Services -->
 	<bean id="myloginService" class="com.javaquarium.business.LoginService"
 		singleton="true">
 		<property name="loginDao">
@@ -33,17 +36,31 @@
 		</property>
 	</bean>
 
+
+	<!-- Beans Actions -->
 	<bean name="/ajoutEspece" class="com.javaquarium.action.AjoutEspeceAction"
 		singleton="true">
 		<property name="poissonService">
 			<ref bean="mypoissonService" />
 		</property>
 	</bean>
- 	<bean name="/ajoutPoissonDansAquarium" class="com.javaquarium.action.AjoutPoissonDansAquariumAction" singleton="true"/>
+ 	<bean name="/ajoutPoissonDansAquarium" class="com.javaquarium.action.AjoutPoissonDansAquariumAction" singleton="true">
+ 		<property name="aquariumService">
+			<ref bean="myaquariumService" />
+		</property>
+ 	</bean>
  	
- 	<bean name="/retirerPoissonDansAquarium" class="com.javaquarium.action.SupprimerPoissonDansAquariumAction" singleton="true"/>
+ 	<bean name="/retirerPoissonDansAquarium" class="com.javaquarium.action.SupprimerPoissonDansAquariumAction" singleton="true">
+ 		<property name="aquariumService">
+			<ref bean="myaquariumService" />
+		</property>
+ 	</bean>
  	
- 	<bean name="/viderAquarium" class="com.javaquarium.action.ViderAquariumAction" singleton="true"/>
+ 	<bean name="/viderAquarium" class="com.javaquarium.action.ViderAquariumAction" singleton="true">
+ 		<property name="aquariumService">
+			<ref bean="myaquariumService" />
+		</property>
+ 	</bean>
 
 	<bean name="/listerEspece" class="com.javaquarium.action.ListerEspeceAction"
 		singleton="true">
