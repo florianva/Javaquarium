@@ -28,7 +28,7 @@ public class SupprimerPoissonDansAquariumAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
-		final int userId = 1;// todo : update when user system will be OP
+		final int userId = (int) request.getSession().getAttribute(LoginAction.SESSION_USER_ID);
 		final IAquariumService service = new AquariumService();
 		final PoissonVO poisson = (PoissonVO) form;
 

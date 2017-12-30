@@ -14,6 +14,7 @@ public class LoginVO extends ActionForm {
 	private static final long serialVersionUID = 7206026725526887388L;
 	private String user;
 	private String password;
+	private Integer id;
 
 	public LoginVO() {
 		user = new String();
@@ -59,6 +60,20 @@ public class LoginVO extends ActionForm {
 			}
 		}
 		return new ActionErrors();
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

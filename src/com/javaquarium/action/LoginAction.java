@@ -8,8 +8,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.javaquarium.beans.web.PoissonUserVO;
 import com.javaquarium.beans.web.LoginVO;
+import com.javaquarium.beans.web.PoissonUserVO;
 import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
 import com.javaquarium.business.ILoginService;
@@ -27,6 +27,7 @@ public class LoginAction extends Action {
 	private static final String FW_SUCCESS = "success";
 	private static final String FW_FAILED = "failed";
 	public static final String SESSION_USER_NAME = "user_name";
+	public static final String SESSION_USER_ID = "user_id";
 
 	private IAquariumService serviceAquarium;
 
@@ -37,11 +38,13 @@ public class LoginAction extends Action {
 		serviceAquarium = new AquariumService();
 
 		final LoginVO loginForm = (LoginVO) form;
-		final Boolean userExist = loginService.isExist(loginForm);
-		final PoissonUserVO aquarium = serviceAquarium.getAquarium(1); // todo : update when user system will be OP
+		final int userId = loginService.getUserId(loginForm);
 
 		if (loginForm != null) {
-			if (userExist == Boolean.TRUE) {
+			if (userId > 0) {
+				final PoissonUserVO aquarium = serviceAquarium.getAquarium(userId);
+
+				request.getSession().setAttribute(SESSION_USER_ID, userId);
 				request.getSession().setAttribute(SESSION_USER_NAME, loginForm.getUser());
 				request.getSession().setAttribute(AjoutPoissonDansAquariumAction.SESSION_USER_NB_POISSON,
 						aquarium.getPoissons().size());

@@ -9,7 +9,11 @@ import com.javaquarium.util.HibernateUtils;
 
 public class LoginDAO implements ILoginDAO {
 
-	public Boolean isExist(LoginDO login) {
+	/**
+	 * return the userId if the user exist or -1 if the user doesn't exist
+	 */
+	@Override
+	public int getUserId(LoginDO login) {
 
 		final Session s = HibernateUtils.getSession();
 		final Transaction tx = s.beginTransaction();
@@ -17,12 +21,12 @@ public class LoginDAO implements ILoginDAO {
 		final Query q = s.createQuery("from LoginDO where user= :username and password= :password");
 		q.setString("username", login.getUser());
 		q.setString("password", login.getPassword());
-		final Object result = q.uniqueResult();
+		final LoginDO result = (LoginDO) q.uniqueResult();
 
 		tx.commit();
 		s.close();
 
-		return (result != null);
+		return result != null ? result.getCode() : -1;
 	}
 
 }

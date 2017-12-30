@@ -8,8 +8,9 @@ public class LoginService implements ILoginService {
 
 	private ILoginDAO loginDao;
 
-	public Boolean isExist(LoginVO vo) {
-		return loginDao.isExist(BeanHelper.map(vo));
+	@Override
+	public int getUserId(LoginVO vo) {
+		return loginDao.getUserId(BeanHelper.map(vo));
 	}
 
 	/**

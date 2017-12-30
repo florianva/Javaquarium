@@ -10,5 +10,5 @@ import com.javaquarium.beans.web.LoginVO;
  */
 public interface ILoginService {
 
-	Boolean isExist(LoginVO d);
+	public int getUserId(LoginVO d);
 }
