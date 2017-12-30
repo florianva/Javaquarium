@@ -8,6 +8,9 @@
 		
 	<bean id="myloginDAO" class="com.javaquarium.dao.LoginDAO"
 		singleton="true" />
+		
+	<bean id="myaquariumDAO" class="com.javaquarium.dao.AquariumDAO"
+		singleton="true" />
 
 	<bean id="mypoissonService" class="com.javaquarium.business.PoissonService"
 		singleton="true">
@@ -20,6 +23,13 @@
 		singleton="true">
 		<property name="loginDao">
 			<ref bean="myloginDAO" />
+		</property>
+	</bean>
+	
+	<bean id="myaquariumService" class="com.javaquarium.business.AquariumService"
+		singleton="true">
+		<property name="aquaDao">
+			<ref bean="myaquariumDAO" />
 		</property>
 	</bean>
 
@@ -46,6 +56,9 @@
 		singleton="true">
 		<property name="loginService">
 			<ref bean="myloginService" />
+		</property>
+		<property name="aquariumService">
+			<ref bean="myaquariumService" />
 		</property>
 	</bean>
 </beans>
