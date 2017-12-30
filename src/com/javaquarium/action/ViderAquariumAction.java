@@ -9,7 +9,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.beans.web.PoissonUserVO;
-import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
 
 /**
@@ -23,21 +22,30 @@ public class ViderAquariumAction extends Action {
 
 	private static final String FW_SUCCESS = "success";
 
+	private IAquariumService aquariumService;
+
 	@Override
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request,
 			final HttpServletResponse response) throws Exception {
 
 		final int userId = (int) request.getSession().getAttribute(LoginAction.SESSION_USER_ID);
-		final IAquariumService service = new AquariumService();
 
-		service.clean(userId);
+		aquariumService.clean(userId);
 
-		final PoissonUserVO aquarium = service.getAquarium(userId);
+		final PoissonUserVO aquarium = aquariumService.getAquarium(userId);
 
 		request.getSession().setAttribute(AjoutPoissonDansAquariumAction.SESSION_USER_NB_POISSON,
 				aquarium.getPoissons().size());
 
 		return mapping.findForward(FW_SUCCESS);
+	}
+
+	/**
+	 * @param aquariumService
+	 *            the aquariumService to set
+	 */
+	public void setAquariumService(IAquariumService aquariumService) {
+		this.aquariumService = aquariumService;
 	}
 
 }

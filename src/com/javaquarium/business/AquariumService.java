@@ -5,7 +5,6 @@ import java.util.List;
 import com.javaquarium.beans.BeanHelper;
 import com.javaquarium.beans.data.PoissonUserDO;
 import com.javaquarium.beans.web.PoissonUserVO;
-import com.javaquarium.dao.AquariumDAO;
 import com.javaquarium.dao.IAquariumDAO;
 
 /**
@@ -16,15 +15,19 @@ import com.javaquarium.dao.IAquariumDAO;
  */
 public class AquariumService implements IAquariumService {
 
-	private IAquariumDAO dao;
+	private IAquariumDAO aquaDao;
 
-	public AquariumService() {
-		dao = new AquariumDAO();
+	/**
+	 * @param aquaDao
+	 *            the aquaDao to set
+	 */
+	public void setAquaDao(IAquariumDAO aquaDao) {
+		this.aquaDao = aquaDao;
 	}
 
 	@Override
 	public PoissonUserVO getAquarium(final int userId) {
-		return BeanHelper.map(dao.findByUser(userId));
+		return BeanHelper.map(aquaDao.findByUser(userId));
 	}
 
 	@Override
@@ -35,18 +38,18 @@ public class AquariumService implements IAquariumService {
 		PoissonUserDO poissonUserDO = aquarium.get(aquarium.size() - 1);
 		poissonUserDO.setUtilisateur(userId);
 
-		dao.add(poissonUserDO);
+		aquaDao.add(poissonUserDO);
 
 	}
 
 	@Override
 	public void removePoisson(int poissonId, int userId) {
-		dao.delete(userId, poissonId);
+		aquaDao.delete(userId, poissonId);
 	}
 
 	@Override
 	public void clean(int userId) {
-		dao.clean(userId);
+		aquaDao.clean(userId);
 	}
 
 }
