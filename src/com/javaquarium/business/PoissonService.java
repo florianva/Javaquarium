@@ -21,7 +21,7 @@ public class PoissonService implements IPoissonService {
 	@Override
 	public List<PoissonVO> getAll() {
 
-		final List<PoissonVO> listPoissons = new LinkedList<PoissonVO>();
+		final List<PoissonVO> listPoissons = new LinkedList<>();
 
 		for (PoissonDO poissonDO : poissonDao.list()) {
 			listPoissons.add(BeanHelper.map(poissonDO));
@@ -33,7 +33,7 @@ public class PoissonService implements IPoissonService {
 	@Override
 	public Boolean isExist(final PoissonVO poisson) {
 
-		final List<PoissonVO> listPoissons = new LinkedList<PoissonVO>();
+		final List<PoissonVO> listPoissons = new LinkedList<>();
 
 		for (PoissonDO poissonDO : poissonDao.getByNom(poisson.getNom())) {
 			listPoissons.add(BeanHelper.map(poissonDO));
@@ -41,7 +41,7 @@ public class PoissonService implements IPoissonService {
 
 		return listPoissons.isEmpty();
 	}
-		
+
 	@Override
 	public void save(PoissonVO poissonForm) {
 		poissonDao.insert(BeanHelper.map(poissonForm));
