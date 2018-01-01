@@ -11,4 +11,6 @@ import com.javaquarium.beans.web.LoginVO;
 public interface ILoginService {
 
 	public int getUserId(LoginVO d);
+
+	void save(LoginVO loginForm);
 }

@@ -44,6 +44,14 @@
 			<ref bean="mypoissonService" />
 		</property>
 	</bean>
+	
+	<bean name="/ajoutUser" class="com.javaquarium.action.AjoutLoginAction"
+		singleton="true">
+		<property name="LoginService">
+			<ref bean="myloginService" />
+		</property>
+	</bean>
+	
  	<bean name="/ajoutPoissonDansAquarium" class="com.javaquarium.action.AjoutPoissonDansAquariumAction" singleton="true">
  		<property name="aquariumService">
 			<ref bean="myaquariumService" />

@@ -29,4 +29,15 @@ public class LoginDAO implements ILoginDAO {
 		return result != null ? result.getCode() : -1;
 	}
 
+	@Override
+	public void insert(LoginDO login) {
+		final Session s = HibernateUtils.getSession();
+		final Transaction t = s.beginTransaction();
+
+		s.save(login);
+
+		t.commit();
+		s.close();
+	}
+
 }

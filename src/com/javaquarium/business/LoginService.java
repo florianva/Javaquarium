@@ -21,4 +21,9 @@ public class LoginService implements ILoginService {
 		this.loginDao = loginDao;
 	}
 
+	@Override
+	public void save(LoginVO loginForm) {
+		loginDao.insert(BeanHelper.map(loginForm));
+	}
+
 }
