@@ -36,7 +36,7 @@ public class AjoutUserAction extends Action {
 
 		final LoginVO loginForm = (LoginVO) form;
 
-		if (loginService.getUserId(loginForm) > 0) {
+		if (loginService.isExist(loginForm)) {
 			ActionErrors errors = new ActionErrors();
 			errors.add("error", new ActionMessage("error.newlogin.user.exist"));
 			saveErrors(request, errors);

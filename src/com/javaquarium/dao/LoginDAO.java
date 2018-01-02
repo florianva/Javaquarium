@@ -30,6 +30,22 @@ public class LoginDAO implements ILoginDAO {
 	}
 
 	@Override
+	public Boolean isExist(LoginDO login) {
+
+		final Session s = HibernateUtils.getSession();
+		final Transaction tx = s.beginTransaction();
+
+		final Query q = s.createQuery("from LoginDO where user= :username");
+		q.setString("username", login.getUser());
+		final Object result = q.uniqueResult();
+
+		tx.commit();
+		s.close();
+
+		return (result != null);
+	}
+
+	@Override
 	public void insert(LoginDO login) {
 		final Session s = HibernateUtils.getSession();
 		final Transaction t = s.beginTransaction();

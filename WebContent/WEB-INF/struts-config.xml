@@ -40,6 +40,12 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 		<action path="/viderAquarium" input="/jsp/UC01_especes.jsp" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="success" path="/listerEspece.do"></forward>	
 		</action>
+		
+		<action path="/ajoutUser" input="/jsp/UC04_register.jsp" name="loginForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="failed" path="/jsp/UC04_register.jsp"></forward>
+			<forward name="success" path="/jsp/UC00_login.jsp"></forward>	
+		</action>
+		
 	</action-mappings>
 
 

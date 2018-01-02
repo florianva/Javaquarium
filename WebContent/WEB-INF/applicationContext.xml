@@ -13,15 +13,15 @@
 	<bean id="myaquariumDAO" class="com.javaquarium.dao.AquariumDAO"
 		singleton="true" />
 
+
+	<!-- Beans Services -->
 	<bean id="mypoissonService" class="com.javaquarium.business.PoissonService"
 		singleton="true">
 		<property name="poissonDao">
 			<ref bean="mypoissonDAO" />
 		</property>
 	</bean>
-
-
-	<!-- Beans Services -->
+	
 	<bean id="myloginService" class="com.javaquarium.business.LoginService"
 		singleton="true">
 		<property name="loginDao">
@@ -45,9 +45,9 @@
 		</property>
 	</bean>
 	
-	<bean name="/ajoutUser" class="com.javaquarium.action.AjoutLoginAction"
+	<bean name="/ajoutUser" class="com.javaquarium.action.AjoutUserAction"
 		singleton="true">
-		<property name="LoginService">
+		<property name="loginService">
 			<ref bean="myloginService" />
 		</property>
 	</bean>
