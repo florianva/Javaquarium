@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ajout d'une nouvelle espèce</title>
+<title><bean:message key="newpoisson.title" /></title>
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 
 </head>
@@ -43,8 +43,8 @@
             <input id="dimension" type="text" placeholder="Dimension" name = "dimension" required>
         </div>
 		<div>
-            <button type="submit" class="pure-button pure-button-primary">Submit</button>
-            <button type="reset" class="pure-button pure-button-primary">Reset</button>
+             <button type="submit" class="pure-button pure-button-primary"><bean:message key="login.submit" /></button>
+            <button type="reset" class="pure-button pure-button-primary"><bean:message key="login.reset" /></button> 
         </div>
     </fieldset>
 </form>

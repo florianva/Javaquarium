@@ -13,6 +13,16 @@ public class LoginService implements ILoginService {
 		return loginDao.getUserId(BeanHelper.map(vo));
 	}
 
+	@Override
+	public Boolean isExist(LoginVO vo) {
+		return loginDao.isExist(BeanHelper.map(vo));
+	}
+
+	@Override
+	public void save(LoginVO loginForm) {
+		loginDao.insert(BeanHelper.map(loginForm));
+	}
+
 	/**
 	 * @param loginDao
 	 *            the loginDao to set
