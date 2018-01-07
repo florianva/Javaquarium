@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ajout d'un nouvel utilisateur</title>
+<title><bean:message key="register.title" /></title>
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 
 </head>
@@ -22,18 +22,18 @@
 		<form class="pure-form pure-form-aligned" action="/Javaquarium/ajoutUser.do" method="post">
     <fieldset>
         <div class="pure-control-group">
-            <label for="name">Username</label>
+            <label for="name"><bean:message key="login.username" /></label>
             <input id="name" type="text" placeholder="Username" name="user" required>
         </div>
 
         <div class="pure-control-group">
-            <label for="password">Password</label>
+            <label for="password"><bean:message key="login.password" /></label>
             <input id="password" type="password" placeholder="Password" name = "password" required>
         </div>
         
 		<div>
-            <button type="submit" class="pure-button pure-button-primary">Créer</button>
-            <button type="reset" class="pure-button pure-button-primary">Reset</button>
+            <button type="submit" class="pure-button pure-button-primary"><bean:message key="login.submit" /></button>
+            <button type="reset" class="pure-button pure-button-primary"><bean:message key="login.reset" /></button> 
         </div>
     </fieldset>
 </form>
